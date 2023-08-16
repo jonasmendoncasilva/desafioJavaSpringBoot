@@ -1,41 +1,16 @@
-# Projeto Java Web Services Com Spring Boot e JPA/Hibernate
+# Desenvolva uma API RESTful
 
-## Os objetivos propostos para este projeto são:
-* Criar um projeto Java com Spring Boot;
-* Implementar o modelo de domínio;
-* Estruturar as camadas lógicas: Resource, Service e Repository;
-* Povoar o banco de dados SQL;
-* Fazer o "CRUD - Create, Retrieve, Update, Delete";
-* Fazer os tratamentos de exceções;
-* Colocar tudo no git
-* Criar testes Unitários
-* Todas as funções devem estar escritas em inglês
-
-## Listar tecnologias foram utilizadas neste projeto:
+## Deve ser desenvolvida uma API RESTful que nos permite gerenciar as informações das propriedades dos países (identificador – gerado automaticamente, nome, capital, região, sub-região, área).
 
 
-# Capturas de Tela da Aplicação
+* Deve ser possível criar um novo país a partir da API criada com todas as suas propriedades;
+* Deve ser possível listar todos os países anteriormente criados;
+* Deve ser possível modificar os dados de um país anteriormente criado;
+* Deve ser possível eliminar um país anteriormente criado;
+* Deve ser possível ordenar a lista dos países por qualquer uma das suas propriedades.
+* Para cada funcionalidade (create, delete, update) deve ser um novo endpoint
+* Todas as funções devem ser escritas em inglês
 
-## Diagrama De Classes
-![Diagrama-De-Classes](https://github.com/tiagosgomes/Projeto_Java_Web_Services_Com_Spring_Boot_e_JPA_Hibernate/blob/main/assets/Diagrama-De-Classes.JPG)
+## Tecnologias a utilizar
 
-## Diagrama De Objetos
-![Diagrama-De-Objetos](https://github.com/tiagosgomes/Projeto_Java_Web_Services_Com_Spring_Boot_e_JPA_Hibernate/blob/main/assets/Diagrama-De-Objetos.JPG)
-
-## Divisão De Camadas
-![Divisão-De-Camadas](https://github.com/tiagosgomes/Projeto_Java_Web_Services_Com_Spring_Boot_e_JPA_Hibernate/blob/main/assets/Divis%C3%A3o-De-Camadas.JPG)
-
-## Criando Usuário No Postman
-![Criando-Usuario-Postman](https://github.com/tiagosgomes/Projeto_Java_Web_Services_Com_Spring_Boot_e_JPA_Hibernate/blob/main/assets/Criando-Usuario-Postman.JPG)
-
-## Recuperando Usuário Por ID
-![Recuperando-Usuario-Por-ID](https://github.com/tiagosgomes/Projeto_Java_Web_Services_Com_Spring_Boot_e_JPA_Hibernate/blob/main/assets/Recuperando-Usuario-Por-ID.JPG)
-
-## Recuperando Lista De Usuários
-![Recuperando-Lista-De-Usuarios](https://github.com/tiagosgomes/Projeto_Java_Web_Services_Com_Spring_Boot_e_JPA_Hibernate/blob/main/assets/Recuperando-Lista-De-Usuarios.JPG)
-
-## Atualizando Usuário Por ID
-![Atualizando-Usuario-Por-ID](https://github.com/tiagosgomes/Projeto_Java_Web_Services_Com_Spring_Boot_e_JPA_Hibernate/blob/main/assets/Atualizando-Usuario-Por-ID.JPG)
-
-## Deletando Usuário Por ID
-![Deletando-Usuario-Por-ID](https://github.com/tiagosgomes/Projeto_Java_Web_Services_Com_Spring_Boot_e_JPA_Hibernate/blob/main/assets/Deletando-Usuario-Por-ID.JPG)
+A API deve ser desenvolvida em Java e SpringBoot e a base de dados para guardar as informações dos países deve ser relacional a escolha do candidato.
