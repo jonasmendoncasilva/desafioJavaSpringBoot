@@ -1,5 +1,7 @@
 package com.project.model;
 
+import com.project.DTO.CountryPostDTO;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,4 +29,12 @@ public class Country {
 	private String region;
 	private String subRegion;
 	private Integer area;
+
+	public Country (CountryPostDTO countryDTO) {
+		this.name = countryDTO.name();
+		this.capital = countryDTO.capital();
+		this.region = countryDTO.region();
+		this.subRegion = countryDTO.subRegion();
+		this.area = countryDTO.area();
+	}
 }
