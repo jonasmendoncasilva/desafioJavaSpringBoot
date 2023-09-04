@@ -1,5 +1,6 @@
 package com.project.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +22,9 @@ public class CountryService {
 	public Country findById(Long id) throws Exception {
 		Optional<Country> country = repository.findById(id);
 		return country.orElseThrow(() -> new Exception ("Usuário não encontrado"));
+	}
+
+	public List<Country> findAll (){
+		return repository.findAll();
 	}
 }

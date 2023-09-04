@@ -1,5 +1,7 @@
 package com.project.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,4 +34,11 @@ public class CountryController {
 		Country country = service.findById(id);
 		return ResponseEntity.ok().body(country);
 	}
+
+	@GetMapping
+	public ResponseEntity<List<Country>> findAll(){
+		List<Country> list = service.findAll();
+		return ResponseEntity.ok().body(list);
+	}
+	
 }
