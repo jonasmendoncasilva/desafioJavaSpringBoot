@@ -21,7 +21,10 @@ public class ConfigTest implements CommandLineRunner {
 		Country c1 = new Country(null, "Brasil", "Brasilia","South","Latin", 100000);
 		Country c2 = new Country(null, "USA", "Washinton","North","Mid-North", 100001);
 		Country c3 = new Country(null, "Russia", "Moscou","North","East-North", 200000);
-
-		repository.saveAll(Arrays.asList(c1,c2,c3));
+		Country c4 = new Country(null, "Colombia", "Bogotá","South","Latin", 300000);
+		Country c5 = new Country(null, "Japão", "Tóquio","North","East-North", 10000);
+		Country c6 = new Country(null, "Inglaterra", "Londres","North","East-North", 20000);
+		
+		repository.saveAll(Arrays.asList(c1,c2,c3,c4,c5,c6));
 	}
 }

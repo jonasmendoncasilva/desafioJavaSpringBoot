@@ -3,6 +3,7 @@ package com.project.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.project.DTO.CountryUpdateDTO;
@@ -27,6 +28,11 @@ public class CountryService {
 		return repository.findAll();
 	}
 
+	public List<Country> findByKeyword(String fieldSearch){
+		Sort sort = Sort.by(fieldSearch).ascending();
+		return repository.findAll(sort);
+	}
+	
 	public void updateCountry(CountryUpdateDTO countryDTO) throws Exception{
 		Country country = checkCountry(countryDTO.id());
 		
