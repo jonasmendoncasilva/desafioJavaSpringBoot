@@ -38,6 +38,10 @@ public class CountryService {
 		repository.save(country);
 	}
 
+	public void deleteCountry(Long id) throws Exception{
+		checkCountry(id);
+		repository.deleteById(id);
+	}
 	
 	public Country checkCountry(Long id) throws Exception {
 		Country country = repository.getReferenceById(id);
