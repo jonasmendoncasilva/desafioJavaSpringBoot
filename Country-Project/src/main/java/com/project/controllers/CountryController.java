@@ -7,11 +7,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.DTO.CountryPostDTO;
+import com.project.DTO.CountryUpdateDTO;
 import com.project.model.Country;
 import com.project.services.CountryService;
 
@@ -25,7 +27,7 @@ public class CountryController {
 	@PostMapping
 	public ResponseEntity<Country> postCountry(@RequestBody CountryPostDTO countryDTO) {
 		Country country = service.postCountry(new Country(countryDTO));
-		return ResponseEntity.ok().body(country);
+		return ResponseEntity.created(null).body(country);
 	}
 
 	@GetMapping
@@ -40,5 +42,10 @@ public class CountryController {
 		List<Country> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
-	
+
+	@PutMapping
+	public ResponseEntity<Void> updateCountry(@RequestBody CountryUpdateDTO countryDTO) throws Exception {
+		service.updateCountry(countryDTO);
+		return ResponseEntity.noContent().build();
+	}
 }
