@@ -21,10 +21,10 @@ public class ResourceExceptionHandler {
 	}
 
 	@ExceptionHandler(KeywordNotFoundException.class)
-	public ResponseEntity<StandardError> keywordNotFound(EntityNotFoundException e, HttpServletRequest request){
+	public ResponseEntity<StandardError> keywordNotFound(KeywordNotFoundException e, HttpServletRequest request){
 		
-		HttpStatus status = HttpStatus.BAD_REQUEST;
-		StandardError ex = new StandardError(Instant.now(),status.value(), e.getMessage(), request.getRequestURI());
+		HttpStatus status = HttpStatus.NOT_FOUND;
+		StandardError ex = new StandardError(Instant.now(), status.value(), e.getMessage(), request.getRequestURI());
 		return ResponseEntity.status(status).body(ex);		
 	}
 

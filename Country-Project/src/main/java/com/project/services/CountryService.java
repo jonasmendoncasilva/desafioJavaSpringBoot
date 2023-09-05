@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.mapping.PropertyReferenceException;
 import org.springframework.stereotype.Service;
 
 import com.project.DTO.CountryUpdateDTO;
@@ -39,14 +40,15 @@ public class CountryService {
 		return repository.findAll();
 	}
 
-	public List<Country> findByKeyword(String fieldSearch){
-		if (!fieldSearch.equals("NAME") || !fieldSearch.equals("CAPITAL")  || !fieldSearch.equals("REGION")  ||
-				!fieldSearch.equals("SUBREGION")  || !fieldSearch.equals("AREA")  ) {
-			throw new KeywordNotFoundException();
+	public List<Country> findByKeyword(String field){
+		try {
+			Sort sort = Sort.by(field).ascending();
+			return repository.findAll(sort);
+		} catch (IllegalStateException e) {
+			throw new KeywordNotFoundException("Campo Inválido");
+		} catch (PropertyReferenceException e) {
+			throw new KeywordNotFoundException("Campo Inválido");
 		}
-		
-		Sort sort = Sort.by(fieldSearch).ascending();
-		return repository.findAll(sort);
 	}
 	
 	public void updateCountry(CountryUpdateDTO countryDTO){
@@ -59,7 +61,7 @@ public class CountryService {
 		country.setArea(countryDTO.area());
 		repository.save(country);
 	}
-
+		
 	public void deleteCountry(Long id){
 		repository.deleteById(id);
 	}

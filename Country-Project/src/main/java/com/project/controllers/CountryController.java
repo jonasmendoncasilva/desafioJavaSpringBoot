@@ -20,7 +20,7 @@ import com.project.model.Country;
 import com.project.services.CountryService;
 
 @RestController
-@RequestMapping("/countrys")
+@RequestMapping("/countries")
 public class CountryController {
 
 	@Autowired
@@ -34,23 +34,23 @@ public class CountryController {
 	}
 
 	@GetMapping
-	@RequestMapping(value = "/select/{id}")
+	@RequestMapping(value = "/get/{id}")
 	public ResponseEntity<CountryGetDTO> findById(@PathVariable Long id){
 		Country country = service.findById(id);
 		return ResponseEntity.ok().body(new CountryGetDTO(country));
 	}
 
 	@GetMapping
-	@RequestMapping(value = "/select/all")
+	@RequestMapping(value = "/get/all")
 	public ResponseEntity<List<Country>> findAll(){
 		List<Country> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping
-	@RequestMapping(value = "/select/order/{fieldSearch}")
+	@RequestMapping(value = "/get/order/{fieldSearch}")
 	public ResponseEntity<List<Country>> findByKeyword(@PathVariable String fieldSearch){
-		List<Country> list = service.findByKeyword(fieldSearch.toUpperCase());
+		List<Country> list = service.findByKeyword(fieldSearch.toLowerCase());
 		return ResponseEntity.ok().body(list);
 	}
 	
