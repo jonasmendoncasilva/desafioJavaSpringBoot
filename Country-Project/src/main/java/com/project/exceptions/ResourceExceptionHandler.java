@@ -13,8 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 public class ResourceExceptionHandler {
 
 	@ExceptionHandler(EntityNotFoundException.class)
-	public ResponseEntity<StandardError> entityNotFound(EntityNotFoundException e, HttpServletRequest request){
-		
+	public ResponseEntity<StandardError> entityNotFound(EntityNotFoundException e, HttpServletRequest request){		
 		HttpStatus status = HttpStatus.NOT_FOUND;
 		StandardError ex = new StandardError(Instant.now(),status.value(), e.getMessage(), request.getRequestURI());
 		return ResponseEntity.status(status).body(ex);		
@@ -22,15 +21,20 @@ public class ResourceExceptionHandler {
 
 	@ExceptionHandler(KeywordNotFoundException.class)
 	public ResponseEntity<StandardError> keywordNotFound(KeywordNotFoundException e, HttpServletRequest request){
-		
 		HttpStatus status = HttpStatus.NOT_FOUND;
 		StandardError ex = new StandardError(Instant.now(), status.value(), e.getMessage(), request.getRequestURI());
 		return ResponseEntity.status(status).body(ex);		
 	}
 
 	@ExceptionHandler(EntityWithSameDataException.class)
-	public ResponseEntity<StandardError> entityWithSameCapital(EntityWithSameDataException e, HttpServletRequest request){
-		
+	public ResponseEntity<StandardError> entityWithSameData(EntityWithSameDataException e, HttpServletRequest request){
+		HttpStatus status = HttpStatus.BAD_REQUEST;
+		StandardError ex = new StandardError(Instant.now(),status.value(), e.getMessage(), request.getRequestURI());
+		return ResponseEntity.status(status).body(ex);		
+	}
+	
+	@ExceptionHandler(EntityNotFoundToDeleteException.class)
+	public ResponseEntity<StandardError> entityNotFoundToDelete(EntityNotFoundToDeleteException e, HttpServletRequest request){
 		HttpStatus status = HttpStatus.BAD_REQUEST;
 		StandardError ex = new StandardError(Instant.now(),status.value(), e.getMessage(), request.getRequestURI());
 		return ResponseEntity.status(status).body(ex);		

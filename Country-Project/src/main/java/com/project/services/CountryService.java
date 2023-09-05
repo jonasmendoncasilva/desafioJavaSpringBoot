@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.project.DTO.CountryUpdateDTO;
 import com.project.exceptions.EntityNotFoundException;
+import com.project.exceptions.EntityNotFoundToDeleteException;
 import com.project.exceptions.EntityWithSameDataException;
 import com.project.exceptions.KeywordNotFoundException;
 import com.project.model.Country;
@@ -51,19 +52,28 @@ public class CountryService {
 	
 	public void updateCountry(CountryUpdateDTO countryDTO){
 		Country country = checkCountry(countryDTO.id());
+		repository.save(update(country, countryDTO));
+	}
 		
+	public void deleteCountry(Long id){
+		checkDelete(id);
+		repository.deleteById(id);
+	}
+	
+	public Country update(Country country, CountryUpdateDTO countryDTO) {
 		country.setName(countryDTO.name());
 		country.setCapital(countryDTO.capital());
 		country.setRegion(countryDTO.region());
 		country.setSubRegion(countryDTO.subRegion());
 		country.setArea(countryDTO.area());
-		repository.save(country);
-	}
-		
-	public void deleteCountry(Long id){
-		repository.deleteById(id);
+		return country;
 	}
 	
+	public Country checkDelete(Long id) {
+		Optional<Country> country = repository.findById(id);
+		return country.orElseThrow(() -> new EntityNotFoundToDeleteException(id));
+	}
+
 	public Country checkCountry(Long id){
 		Optional<Country> country = repository.findById(id);
 		return country.orElseThrow(() -> new EntityNotFoundException(id));
