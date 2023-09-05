@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import com.project.DTO.CountryPostDTO;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,7 +28,10 @@ public class Country implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(unique=true)
 	private String name;
+	
+	@Column(unique=true)
 	private String capital;
 	private String region;
 	private String subRegion;

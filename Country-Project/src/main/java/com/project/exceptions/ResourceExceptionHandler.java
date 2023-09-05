@@ -28,16 +28,8 @@ public class ResourceExceptionHandler {
 		return ResponseEntity.status(status).body(ex);		
 	}
 
-	@ExceptionHandler(EntityWithSameNameException.class)
-	public ResponseEntity<StandardError> entityWithSameName(EntityNotFoundException e, HttpServletRequest request){
-		
-		HttpStatus status = HttpStatus.BAD_REQUEST;
-		StandardError ex = new StandardError(Instant.now(),status.value(), e.getMessage(), request.getRequestURI());
-		return ResponseEntity.status(status).body(ex);		
-	}
-	
-	@ExceptionHandler(EntityWithSameCapitalException.class)
-	public ResponseEntity<StandardError> entityWithSameCapital(EntityNotFoundException e, HttpServletRequest request){
+	@ExceptionHandler(EntityWithSameDataException.class)
+	public ResponseEntity<StandardError> entityWithSameCapital(EntityWithSameDataException e, HttpServletRequest request){
 		
 		HttpStatus status = HttpStatus.BAD_REQUEST;
 		StandardError ex = new StandardError(Instant.now(),status.value(), e.getMessage(), request.getRequestURI());
